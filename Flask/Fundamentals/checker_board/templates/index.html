@@ -14,7 +14,7 @@
 <body>
 
     <h1>*** Checkerboard ***</h1>
-
+    {% for x in range(row) %}
     <table>
         <tr>
             {% for x in range(col) %}
@@ -29,6 +29,6 @@
             {% endfor %}
         </tr>
     </table>
-    
+    {% endfor %}
 </body>
 </html>
