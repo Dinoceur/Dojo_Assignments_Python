@@ -10,7 +10,6 @@ class Pet():
     def show_stats(self):
         print(f"Name: {self.name}\nType: {self.type}\nTricks: {self.tricks}\nEnergy: {self.energy}\nHealth: {self.health}\n")
         return self
-
     # sleep() - increases the pets energy by 25
     def sleep(self):
         self.energy += 25
@@ -19,6 +18,7 @@ class Pet():
     # eat() - increases the pet's energy by 5 & health by 10
     def eat(self):
         self.energy += 5
+        self.health += 10
         print (f"{self.name}: Nom Nom Nom")
         return self
     # play() - increases the pet's health by 5
