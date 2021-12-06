@@ -11,7 +11,7 @@ buildings = {
     "Casino" : (-50,50)
     }
 
-@app.route('/')
+@app.route('/') 
 def index():
     if 'gold_count' not in session:
         session['gold_count'] = 0
