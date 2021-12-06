@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+<style>
+    h1{
+        text-align: center;
+    }
+    p{
+        text-align: center;
+    }
+    .container{
+        text-align: center;
+    }
+</style>
+</head>
+    <body>
+        <h1>Counter!</h1>
+        <p>{{session['count']}}</p>
+    <div class="container">
+        <form action="/count" method="post" class="">
+            <button name = 'click' value = 'left'>Click</button>
+            <button name = 'click' value = 'right'>Reset</button>
+        </form>
+    </div>
+    </body>
+</html>
