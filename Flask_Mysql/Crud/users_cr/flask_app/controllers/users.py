@@ -1,8 +1,6 @@
-from flask import Flask, render_template, request, redirect
-
-from users import User
-
-app=Flask(__name__)
+from flask_app import app
+from flask import render_template,redirect,request
+from flask_app.models.user import User
 
 @app.route('/')
 def index():
@@ -18,11 +16,10 @@ def users():
 def new():
     return render_template("create.html")
 
-@app.route('/user/create',methods=['POST'])
+@app.post('/user/create')
 def create():
-    print(request.form)
-    User.save(request.form)
-    return redirect('/users')
+    user_id = User.save(request.form)
+    return redirect(f'/user/show/{user_id}')
 
 @app.route('/user/edit/<int:id>')
 def edit(id):
@@ -38,10 +35,14 @@ def show(id):
     }
     return render_template('show.html',user=User.get_one(data))
 
-@app.route('/user/update',methods=['POST'])
-def update():
-    User.update(request.form)
-    return redirect('/users')
+@app.post('/user/update/<int:id>')
+def update(id):
+    data ={ 
+        **request.form,
+        "id":id
+    }
+    User.update(data)
+    return redirect(f'/user/show/{id}')
 
 @app.route('/user/delete/<int:id>')
 def delete(id):
@@ -52,5 +53,3 @@ def delete(id):
     return redirect('/users')
 
 
-if __name__=="__main__":
-    app.run(debug=True)
